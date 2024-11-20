@@ -5,7 +5,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
     <title>Product List</title>
-    <link rel="icon" href="img/qiuzhilogo.png">
+    <link rel="icon" href="img/BuyBuy.png">
 
     <!-- Include Styles -->
     <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
@@ -27,51 +27,49 @@
             <div class="py-container">
                 <div class="shortcut">
                     <ul class="fl">
-                        <li class="f-item">Welcome to Qiuzhi!</li>
-                        <li class="f-item">Please
-                            <a href="login.html" target="_blank">Login</a>
+                        <li class="f-item">FREE SHIPPIING THIS WEEK ORDER OVER $50！</li>
+                        <li class="f-item">
+                            <a href="login.html" target="_blank">Sign in </a>
                             <span>
-									<a href="register.html" target="_blank">Free Registration</a>
-								</span>
+                           <a href="register.html" target="_blank">Sign up</a>
+                        </span>
                         </li>
+
                     </ul>
                     <div class="fr typelist">
                         <ul class="types">
                             <li class="f-item">
-                                <span>我的订单</span>
+                                <span>My Order</span>
                             </li>
 
                             <li class="f-item">
 									<span>
-										<a href="cart.html" target="_blank">My Shopping Cart</a>
+										<a href="cart.html" target="_blank">My Cart</a>
 									</span>
                             </li>
                             <li class="f-item">
 									<span>
-										<a href="home.html" target="_blank">My Qiuzhi</a>
+										<a href="home.html" target="_blank">My Account</a>
 									</span>
                             </li>
                             <li class="f-item">
-                                <span>Qiuzhi Membership</span>
+                                <span>Membership</span>
                             </li>
                             <li class="f-item">
-                                <span>Corporate Procurement</span>
+                                <span>Order History</span>
                             </li>
                             <li class="f-item">
-                                <span>Follow Qiuzhi</span>
+                                <span>Buy Again</span>
                             </li>
                             <li class="f-item">
                                 <span>
-                                    <a href="cooperation.html" target="_blank">Partnership</a>
+                                    <a href="cooperation.html" target="_blank">Cooperation</a>
                                 </span>
                             </li>
                             <li class="f-item">
                                     <span>
-                                        <a href="shoplogin.html" target="_blank">Merchant Console</a>
+                                        <a href="shoplogin.html" target="_blank">Service</a>
                                         </span>
-                            </li>
-                            <li class="f-item">
-                                <span>Website Navigation</span>
                             </li>
                         </ul>
                     </div>
@@ -85,7 +83,8 @@
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
-                        <a class="logo-bd" title="Qiuzhi" href="index.html" target="_blank"></a>
+                        <img class="logo-nd" src="img/BuyBuy1.png" alt="Logo" style="width: 100px; height: auto;">
+
                     </div>
                     <div class="yui3-u Rit searchArea">
                         <div class="search">
@@ -110,7 +109,7 @@
 <div class="py-container index">
     <!--banner-->
     <div class="banner">
-        <img src="img/_/banner.png" class="img-responsive" alt="">
+        <img src="img/_/banner.jpg" class="img-responsive" alt="">
     </div>
 
     <!--Product List-->
@@ -128,7 +127,7 @@
                         <b class='sec-price' th:text="'￥'+${item.price}"></b>
                     </div>
                     <div class='num'>
-                        <div>已售10</div>
+                        <div>Review10</div>
                         <div class='progress'>
                             <div class='sui-progress progress-danger'>
                                 <span style='width: 70%;' class='bar'></span>
@@ -138,7 +137,7 @@
                             <b class='owned'  th:text="${item.availableStock}" > </b>units
                         </div>
                     </div>
-                    <a class='sui-btn btn-block btn-buy' th:href="@{'/commodities/'+${item.commodityId}}" target='_blank'>立即抢购</a>
+                    <a class='sui-btn btn-block btn-buy' th:href="@{'/commodities/'+${item.commodityId}}" target='_blank'>Add to Cart</a>
                 </li>
             </tr>
         </ul>
@@ -171,47 +170,57 @@
                 <ul class="Mod-Service-list">
                     <li class="grid-service-item intro  intro1">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>Authenticity Guarantee</h4>
-                            <p>Authentic products with invoices provided</p>
+                            <h4>Gifting & Registry</h4>
+                            <p>Gift Cards</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item  intro intro2">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>Authenticity Guarantee</h4>
-                            <p>Authentic products with invoices provided</p>
+                            <h4>Deals & Savings</h4>
+                            <p>Holiday Deals</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item intro  intro3">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>Authenticity Guarantee</h4>
-                            <p>Authentic products with invoices provided</p>
+                            <h4>Groceries & Stores</h4>
+                            <p>Foods, Markets</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item  intro intro4">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>Authenticity Guarantee</h4>
-                            <p>Authentic products with invoices provided</p>
+                            <h4>Fashion & Beauty</h4>
+                            <p>Jewelry, Perfume</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item intro intro5">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>Authenticity Guarantee</h4>
-                            <p>Authentic products with invoices provided</p>
+                            <h4>Home & DIY</h4>
+                            <p>Kitchen, Appliance</p>
                         </div>
+
 
                     </li>
                 </ul>
@@ -219,60 +228,98 @@
             <div class="clearfix Mod-list">
                 <div class="yui3-g">
                     <div class="yui3-u-1-6">
-                        <h4>Shopping Guide</h4>
+                        <h4>SERVICES</h4>
                         <ul class="unstyled">
-                            <li>Shopping Process</li>
-                            <li>Membership Introduction</li>
-                            <li>Life Travel/Group Buy</li>
+                            <li>Princes Drop</li>
+                            <li>New Products</li>
+                            <li>Best Sales</li>
+                            <li>Contact Us</li>
                             <li>Common Questions</li>
-                            <li>Shopping Guide</li>
                         </ul>
+
 
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>Delivery Methods</h4>
+                        <h4>DELIVERY</h4>
                         <ul class="unstyled">
-                            <li>Self Pickup</li>
-                            <li>211 Time-limited Delivery</li>
-                            <li>Delivery Service Inquiry</li>
-                            <li>Delivery Fee Standards</li>
-                            <li>Overseas Delivery</li>
+                            <li>Pick Up</li>
+                            <li>24 Hrs Delivery</li>
+                            <li>Inquiry Shipping</li>
+                            <li>Shipping Fee</li>
+                            <li>International Shipping</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>After-sales Service</h4>
+                        <h4>PAYMENT</h4>
                         <ul class="unstyled">
-                            <li>After-sales Policies</li>
-                            <li>Price Protection</li>
-                            <li>Refund Instructions</li>
-                            <li>Repair/Return & Exchange</li>
-                            <li>Order Cancellation</li>
-                        </ul>
-                    </div>
-                    <div class="yui3-u-1-6">
-                        <h4>Payment Methods</h4>
-                        <ul class="unstyled">
-                            <li>Cash on Delivery</li>
+                            <li>Pay On Delivery</li>
                             <li>Online Payment</li>
-                            <li>Installment Payment</li>
-                            <li>Postal Remittance</li>
-                            <li>Corporate Transfer</li>
+                            <li>Installment</li>
+                            <li>Remittance</li>
+                            <li>Transfer</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>Special Services</h4>
+                        <h4>AFTER SALE</h4>
                         <ul class="unstyled">
-                            <li>Auction Island</li>
-                            <li>DIY Assembly</li>
-                            <li>Extended Warranty</li>
-                            <li>Pin You Gou E-Card</li>
-                            <li>Pin You Gou Communication</li>
+                            <li>Return Policy</li>
+                            <li>Change Address</li>
+                            <li>Refund</li>
+                            <li>Return/Replace</li>
+                            <li>Cancel Order</li>
                         </ul>
                     </div>
+                    <!--                    <div class="yui3-u-1-6">-->
+                    <!--                        <h4>特色服务</h4>-->
+                    <!--                        <ul class="unstyled">-->
+                    <!--                            <li>夺宝岛</li>-->
+                    <!--                            <li>DIY装机</li>-->
+                    <!--                            <li>延保服务</li>-->
+                    <!--                            <li>品优购E卡</li>-->
+                    <!--                            <li>品优购通信</li>-->
+                    <!--                        </ul>-->
+                    <!--                    </div>-->
                     <div class="yui3-u-1-6">
-                        <h4>Help Center</h4>
-                        <img src="img/erwei_jz.png">
+                        <h4>CONTACT</h4>
+                        <!--                        <img src="img/service.png">-->
+                        <ul class="unstyled">
+                            <li class="footer-nav-item flex">
+                                <div class="icon-box">
+                                    <ion-icon name="location-outline"></ion-icon>
+                                </div>
+
+
+                                <address class="content">
+                                    419 State 414 Rte
+                                    Beaver Dams, New York(NY), 14812, USA
+                                </address>
+                            </li>
+
+
+                            <li class="footer-nav-item flex">
+                                <div class="icon-box">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+
+
+                                <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+                            </li>
+
+
+                            <li class="footer-nav-item flex">
+                                <div class="icon-box">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                </div>
+
+
+                                <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+                            </li>
+
+
+                        </ul>
                     </div>
+
+
                 </div>
             </div>
             <div class="Mod-copyright">
@@ -280,103 +327,53 @@
                     <li>About Us
                         <span class="space"></span>
                     </li>
-                    <li>Contact Us
+                    <li>Connect Us
                         <span class="space"></span>
                     </li>
-                    <li>About Us
-                        <span class="space"></span>
-                    </li>
-                    <li>Merchant Admission
+                    <li>Join Us
                         <span class="space"></span>
                     </li>
                     <li>Marketing Center
                         <span class="space"></span>
                     </li>
-                    <li>Friend Links
-                        <span class="space"></span>
-                    </li>
-                    <li>About Us
-                        <span class="space"></span>
-                    </li>
-                    <li>Marketing Center
-                        <span class="space"></span>
-                    </li>
-                    <li>Friend Links
-                        <span class="space"></span>
-                    </li>
-                    <li>About Us</li>
-                </ul>
-                <p>Qiuzhi</p>
-                <p>Business Cooperation: xx.com</p>
+
+
+
+                <div class="footer-bottom">
+                    <div class="container">
+                        <img src="img/payment.png" alt="payment method" class="payment-img">
+                        <p>Copyright © <a href="#">Gracy</a> All rights reserved.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </div>
-<!-- Footer End -->
-<!-- Include Component Libraries -->
+
+<!--页面底部END-->
+<!-- 引入组件库 -->
 <script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
 <script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
+<script type = "module" src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!--</script>-->
 <script>
     new Vue({
         el: '#app',
         data() {
             return {
-                goodslist: [{
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                },
-                {
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                },
-                {
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                },
-                {
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                },
-                {
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                },
-                {
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                },
-                {
-                    intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
-                    newprice: '6088',
-                    oldprice: '6988',
-                    rate: '87%',
-                    left: '29'
-                }]
+                goodslist: [
+                    {
+                        intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }
+                ]
             }
         }
-    })
+    });
 </script>
-
-
-
 </body>
-
 </html>
