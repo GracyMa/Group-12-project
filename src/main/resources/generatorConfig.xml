@@ -16,24 +16,24 @@ serverTimezone=UTC"
         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
-        <!-- targetProject:生成PO类的位置 -->
+        <!-- targetProject: The location where PO classes are generated -->
         <javaModelGenerator targetPackage="com.gracyma.onlineshoppingproject.db.po"
                             targetProject="./src/main/java">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!-- enableSubPackages: Whether to use schema as a suffix for the package -->
             <property name="enableSubPackages" value="true" />
-            <!-- 从数据库返回的值被清理前后的空格 -->
+            <!-- Remove leading and trailing spaces from database-returned values -->
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
-        <!-- targetProject:mapper映射文件生成的位置 -->
+        <!-- targetProject: The location where mapper mapping files are generated -->
         <sqlMapGenerator targetPackage="mappers"
                          targetProject="./src/main/resources">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!-- enableSubPackages: Whether to use schema as a suffix for the package -->
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
-        <!-- targetPackage：mapper接口生成的位置 -->
+        <!-- targetPackage: The location where mapper interfaces are generated -->
         <javaClientGenerator type="XMLMAPPER"
                              targetPackage="com.gracyma.onlineshoppingproject.db.mappers" targetProject="./src/main/java">
-            <!-- enableSubPackages:是否让schema作为包的后缀 -->
+            <!-- enableSubPackages: Whether to use schema as a suffix for the package -->
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
         <table schema="" tableName="online_shopping_user"

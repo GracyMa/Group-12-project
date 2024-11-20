@@ -25,11 +25,12 @@
 </head>
 <body>
 <div class="dialog-card">
-  <h1>读取用户信息</h1>
-  <p>用户id：<span th:text="${user.id}"></span></p>
-  <p>用户名称：<span th:text="${user.name}"></span></p>
-  <p>用户Email：<span th:text="${user.email}"></span></p>
-<!--  <p>用户JWT：<span th:text="${jwtToken}"></span></p>-->
+  <h1>Fetch User Information</h1>
+  <p>User ID: <span th:text="${user.id}"></span></p>
+  <p>Username: <span th:text="${user.name}"></span></p>
+  <p>User Email: <span th:text="${user.email}"></span></p>
+  <!-- Uncomment the following line if JWT token needs to be displayed -->
+  <!-- <p>User JWT: <span th:text="${jwtToken}"></span></p> -->
 </div>
 
 </body>
