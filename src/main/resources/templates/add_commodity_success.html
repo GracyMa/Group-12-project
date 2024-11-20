@@ -6,35 +6,35 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>商品发布</title>
+    <title>Product Publishing</title>
     <link rel="stylesheet" type="text/css" href="/css/all.css" />
     <link rel="stylesheet" type="text/css" href="/css/pages-getOrderInfo.css" />
 </head>
 
 <body>
-<!--head-->
-<!-- 头部栏位 -->
-<!--页面顶部-->
+<!-- Head -->
+<!-- Header Section -->
+<!-- Page Top -->
 <div id="nav-bottom">
-    <!--顶部-->
+    <!-- Top -->
     <div class="nav-top">
         <div class="top">
             <div class="py-container">
                 <div class="shortcut">
                     <ul class="fl">
                         <li class="f-item"></li>
-                        <li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html"
-                                                                                                    target="_blank">免费注册</a></span></li>
+                        <li class="f-item">Please <a href="login.html" target="_blank">login</a>　<span><a href="register.html"
+                                                                                                    target="_blank">Free Register</a></span></li>
                     </ul>
                     <div class="fr typelist">
                         <ul class="types">
-                            <li class="f-item"><span>我的订单</span></li>
+                            <li class="f-item"><span>My Orders</span></li>
 
-                            <li class="f-item"><span><a href="cart.html" target="_blank">我的购物车</a></span></li>
-                            <li class="f-item"><span>企业采购</span></li>
-                            <li class="f-item"><span><a href="cooperation.html" target="_blank">合作招商</a></span></li>
-                            <li class="f-item"><span><a href="shoplogin.html" target="_blank">商家后台</a></span></li>
-                            <li class="f-item"><span>网站导航</span></li>
+                            <li class="f-item"><span><a href="cart.html" target="_blank">My Shopping Cart</a></span></li>
+                            <li class="f-item"><span>Corporate Procurement</span></li>
+                            <li class="f-item"><span><a href="cooperation.html" target="_blank">Partnership</a></span></li>
+                            <li class="f-item"><span><a href="shoplogin.html" target="_blank">Merchant Portal</a></span></li>
+                            <li class="f-item"><span>Website Navigation</span></li>
                         </ul>
                     </div>
 
@@ -42,7 +42,7 @@
             </div>
         </div>
 
-        <!--头部-->
+        <!-- Header -->
         <div class="header">
             <div class="py-container">
                 <div class="yui3-g Logo">
@@ -55,7 +55,7 @@
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
                                     <input type="text" id="autocomplete" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+                                    <button class="sui-btn btn-xlarge btn-danger" type="button">Search</button>
                                 </div>
                             </form>
                         </div>
@@ -69,10 +69,10 @@
 </div>
 
 <div class="cart py-container" id="cart">
-    <!--主内容-->
+    <!-- Main Content -->
     <div class="checkout py-container">
         <div class="checkout-tit">
-            <h4 class="tit-txt">新增商品信息</h4>
+            <h4 class="tit-txt">Add Product Information</h4>
         </div>
         <div class="checkout-steps">
             <div class="hr"></div>
@@ -100,13 +100,13 @@
                             }
                         </style>
                         <div class="dialog-card">
-                            <h1>商品添加成功</h1>
-                            <p>商品Id：<span th:text="${Item.commodityId}"></span></p>
-                            <p>商品名称：<span th:text="${Item.commodityName}"></span></p>
-                            <p>商品描述：<span th:text="${Item.commodityDesc}"></span></p>
-                            <p>商品价格：<span th:text="${Item.price}"></span></p>
-                            <p>商品数量：<span th:text="${Item.availableStock}"></span></p>
-                            <p>商家id：<span th:text="${Item.creatorUserId}"></span></p>
+                            <h1>Product Added Successfully</h1>
+                            <p>Product Id:<span th:text="${Item.commodityId}"></span></p>
+                            <p>Product Name:<span th:text="${Item.commodityName}"></span></p>
+                            <p>Product Description:<span th:text="${Item.commodityDesc}"></span></p>
+                            <p>Product Price:<span th:text="${Item.price}"></span></p>
+                            <p>Product Quantity<span th:text="${Item.availableStock}"></span></p>
+                            <p>Merchant ID<span th:text="${Item.creatorUserId}"></span></p>
                         </div>
                     </ul>
                 </div>
@@ -115,8 +115,8 @@
         </div>
     </div>
 </div>
-<!-- 底部栏位 -->
-<!--页面底部-->
+<!-- Footer Section -->
+<!-- Page Footer -->
 <div class="clearfix footer">
     <div class="py-container">
         <div class="footlink">
@@ -126,8 +126,8 @@
 
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Authenticity Guarantee</h4>
+                            <p>Authenticity guaranteed, invoices provided</p>
                         </div>
 
                     </li>
@@ -135,8 +135,8 @@
 
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Authenticity Guarantee</h4>
+                            <p>Authenticity guaranteed, invoices provided</p>
                         </div>
 
                     </li>
@@ -144,8 +144,8 @@
 
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Authenticity Guarantee</h4>
+                            <p>Authenticity guaranteed, invoices provided</p>
                         </div>
 
                     </li>
@@ -153,8 +153,8 @@
 
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Authenticity Guarantee</h4>
+                            <p>Authenticity guaranteed, invoices provided</p>
                         </div>
 
                     </li>
@@ -162,8 +162,8 @@
 
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Authenticity Guarantee</h4>
+                            <p>Authenticity guaranteed, invoices provided</p>
                         </div>
 
                     </li>
@@ -172,54 +172,54 @@
             <div class="clearfix Mod-list">
                 <div class="yui3-g">
                     <div class="yui3-u-1-6">
-                        <h4>购物指南</h4>
+                        <h4>Shopping Guide</h4>
                         <ul class="unstyled">
-                            <li>购物流程</li>
-                            <li>会员介绍</li>
-                            <li>生活旅行/团购</li>
-                            <li>常见问题</li>
-                            <li>购物指南</li>
+                            <li>Shopping Process</li>
+                            <li>Membership Introduction</li>
+                            <li>Life & Travel/Group Buying</li>
+                            <li>FAQs</li>
+                            <li>Shopping Guide</li>
                         </ul>
 
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>配送方式</h4>
+                        <h4>Delivery Methods</h4>
                         <ul class="unstyled">
-                            <li>上门自提</li>
-                            <li>211限时达</li>
-                            <li>配送服务查询</li>
-                            <li>配送费收取标准</li>
-                            <li>海外配送</li>
+                            <li>Pick-up Service</li>
+                            <li>Time-Limited Delivery</li>
+                            <li>Delivery Service Inquiry</li>
+                            <li>Delivery Fee Standards</li>
+                            <li>Overseas Delivery</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>支付方式</h4>
+                        <h4>Payment Methods</h4>
                         <ul class="unstyled">
-                            <li>货到付款</li>
-                            <li>在线支付</li>
-                            <li>分期付款</li>
-                            <li>邮局汇款</li>
-                            <li>公司转账</li>
+                            <li>Cash on Delivery</li>
+                            <li>Online Payment</li>
+                            <li>Installment Payment</li>
+                            <li>Postal Remittance</li>
+                            <li>Corporate Transfer</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>售后服务</h4>
+                        <h4>After-Sales Service</h4>
                         <ul class="unstyled">
-                            <li>售后政策</li>
-                            <li>价格保护</li>
-                            <li>退款说明</li>
-                            <li>返修/退换货</li>
-                            <li>取消订单</li>
+                            <li>After-Sales Policy</li>
+                            <li>Price Protection</li>
+                            <li>Refund Instructions</li>
+                            <li>Repair/Exchange/Return</li>
+                            <li>Cancel Order</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>特色服务</h4>
+                        <h4>Special Services</h4>
                         <ul class="unstyled">
-                            <li>夺宝岛</li>
-                            <li>DIY装机</li>
-                            <li>延保服务</li>
-                            <li>品优购E卡</li>
-                            <li>品优购通信</li>
+                            <li>Treasure Island</li>
+                            <li>DIY Assembly</li>
+                            <li>Extended Warranty</li>
+                            <li>E-Card</li>
+                            <li>Communication</li>
                         </ul>
                     </div>
                 </div>
@@ -227,7 +227,7 @@
         </div>
     </div>
 </div>
-<!--页面底部END-->
+<!-- Page Footer END -->
 <script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
 
 <script src="/js/vue.js"></script>
