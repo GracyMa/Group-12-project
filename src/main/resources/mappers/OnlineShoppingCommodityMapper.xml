@@ -21,6 +21,13 @@
     from online_shopping_commodity
     where commodity_id = #{commodityId,jdbcType=BIGINT}
   </select>
+  <select id="listCommodities" resultType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">
+    SELECT commodity_id, commodity_name, commodity_desc, price, available_stock, creator_user_id, total_stock, lock_stock
+    FROM online_shopping_commodity;
+  </select>
+  <select id="listCommoditiesByUserId"
+          resultType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity"></select>
+
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from online_shopping_commodity
     where commodity_id = #{commodityId,jdbcType=BIGINT}

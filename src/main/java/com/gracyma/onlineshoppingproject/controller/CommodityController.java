@@ -33,6 +33,12 @@ public class CommodityController {
         resultMap.put("commodity", onlineShoppingCommodity);
         return "item_detail";
     }
+    @GetMapping({"/commodities", "/"})
+    public String listCommodities(Map<String, Object> resultMap){
+        List<OnlineShoppingCommodity> onlineShoppingCommodities = onlineShoppingCommodityDao.listCommodities();
+        resultMap.put("itemList", onlineShoppingCommodities);
+        return "list_items";
+    }
 
     @RequestMapping("/addItem")
     public String addCommodity() {
