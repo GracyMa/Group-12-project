@@ -12,37 +12,62 @@
     <result column="lock_stock" jdbcType="INTEGER" property="lockStock" />
   </resultMap>
   <sql id="Base_Column_List">
-    commodity_id, commodity_name, commodity_desc, price, available_stock, creator_user_id, 
+    commodity_id, commodity_name, commodity_desc, price, available_stock, creator_user_id,
     total_stock, lock_stock
   </sql>
   <select id="selectByPrimaryKey" parameterType="java.lang.Long" resultMap="BaseResultMap">
-    select 
+    select
     <include refid="Base_Column_List" />
     from online_shopping_commodity
     where commodity_id = #{commodityId,jdbcType=BIGINT}
   </select>
-  <select id="listCommodities" resultType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">
-    SELECT commodity_id, commodity_name, commodity_desc, price, available_stock, creator_user_id, total_stock, lock_stock
-    FROM online_shopping_commodity;
+
+<!--  <select id="listCommodities"-->
+<!--          resultType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from online_shopping_commodity-->
+<!--  </select>-->
+
+<!--  <select id="listCommoditiesByUserId"-->
+<!--          resultType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">-->
+<!--    select-->
+<!--    <include refid="Base_Column_List" />-->
+<!--    from online_shopping_commodity-->
+<!--    where creator_user_id =  #{userId,jdbcType=BIGINT}-->
+<!--  </select>-->
+  <select id="listCommodities" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from online_shopping_commodity
   </select>
-  <select id="listCommoditiesByUserId"
+
+  <select id="listCommoditiesByUserId" resultMap="BaseResultMap">
+    select
+    <include refid="Base_Column_List" />
+    from online_shopping_commodity
+    where creator_user_id = #{userId,jdbcType=BIGINT}
+  </select>
+
+
+  <select id="searchCommodityByKeyWord"
           resultType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">
     select
     <include refid="Base_Column_List" />
     from online_shopping_commodity
-    where creator_user_id =  #{userId,jdbcType=BIGINT}
+    where commodity_desc like #{keyWord,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.Long">
     delete from online_shopping_commodity
     where commodity_id = #{commodityId,jdbcType=BIGINT}
   </delete>
   <insert id="insert" parameterType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">
-    insert into online_shopping_commodity (commodity_id, commodity_name, commodity_desc, 
-      price, available_stock, creator_user_id, 
-      total_stock, lock_stock)
-    values (#{commodityId,jdbcType=BIGINT}, #{commodityName,jdbcType=VARCHAR}, #{commodityDesc,jdbcType=VARCHAR}, 
-      #{price,jdbcType=INTEGER}, #{availableStock,jdbcType=INTEGER}, #{creatorUserId,jdbcType=BIGINT}, 
-      #{totalStock,jdbcType=INTEGER}, #{lockStock,jdbcType=INTEGER})
+    insert into online_shopping_commodity (commodity_id, commodity_name, commodity_desc,
+                                           price, available_stock, creator_user_id,
+                                           total_stock, lock_stock)
+    values (#{commodityId,jdbcType=BIGINT}, #{commodityName,jdbcType=VARCHAR}, #{commodityDesc,jdbcType=VARCHAR},
+            #{price,jdbcType=INTEGER}, #{availableStock,jdbcType=INTEGER}, #{creatorUserId,jdbcType=BIGINT},
+            #{totalStock,jdbcType=INTEGER}, #{lockStock,jdbcType=INTEGER})
   </insert>
   <insert id="insertSelective" parameterType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">
     insert into online_shopping_commodity
@@ -129,19 +154,19 @@
   <update id="updateByPrimaryKey" parameterType="com.gracyma.onlineshoppingproject.db.po.OnlineShoppingCommodity">
     update online_shopping_commodity
     set commodity_name = #{commodityName,jdbcType=VARCHAR},
-      commodity_desc = #{commodityDesc,jdbcType=VARCHAR},
-      price = #{price,jdbcType=INTEGER},
-      available_stock = #{availableStock,jdbcType=INTEGER},
-      creator_user_id = #{creatorUserId,jdbcType=BIGINT},
-      total_stock = #{totalStock,jdbcType=INTEGER},
-      lock_stock = #{lockStock,jdbcType=INTEGER}
+        commodity_desc = #{commodityDesc,jdbcType=VARCHAR},
+        price = #{price,jdbcType=INTEGER},
+        available_stock = #{availableStock,jdbcType=INTEGER},
+        creator_user_id = #{creatorUserId,jdbcType=BIGINT},
+        total_stock = #{totalStock,jdbcType=INTEGER},
+        lock_stock = #{lockStock,jdbcType=INTEGER}
     where commodity_id = #{commodityId,jdbcType=BIGINT}
   </update>
   <update id="deductStockWithCommodityId">
     update online_shopping_commodity
     set available_stock = available_stock - 1,
         lock_stock = lock_stock + 1
-    where commodity_id = #{commodityId,jdbcType=BIGINT} and available_stock &gt; 0
+    where commodity_id = #{commodityId,jdbcType=BIGINT} and available_stock > 0
   </update>
   <update id="revertStockWithCommodityId">
     update online_shopping_commodity
@@ -149,4 +174,6 @@
         lock_stock = lock_stock - 1
     where commodity_id = #{commodityId,jdbcType=BIGINT}
   </update>
+
+
 </mapper>

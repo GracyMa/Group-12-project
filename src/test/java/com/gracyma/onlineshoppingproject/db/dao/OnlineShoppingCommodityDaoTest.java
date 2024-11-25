@@ -21,13 +21,13 @@ class OnlineShoppingCommodityDaoTest {
     @Test
     void insertCommodity() {
         OnlineShoppingCommodity commodity = OnlineShoppingCommodity.builder()
-                .commodityName("TestCommodity")
+                .commodityName("Dress")
                 .commodityDesc("desc")
-                .availableStock(111)
-                .totalStock(111)
-                .price(999)
+                .availableStock(20)
+                .totalStock(20)
+                .price(100)
                 .lockStock(0)
-                .creatorUserId(124L)
+                .creatorUserId(125L)
                 .build();
         dao.insertCommodity(commodity);
     }
@@ -40,13 +40,13 @@ class OnlineShoppingCommodityDaoTest {
 
     @Test
     void listCommoditiesByUserId() {
-        List<OnlineShoppingCommodity> onlineShoppingCommodities = dao.listCommoditiesByUserId(124L);
+        List<OnlineShoppingCommodity> onlineShoppingCommodities = dao.listCommoditiesByUserId(125L);
         log.info(onlineShoppingCommodities.toString());
     }
 
     @Test
     void getCommodityDetail() {
-        OnlineShoppingCommodity commodityDetail = dao.getCommodityDetail(1002);
+        OnlineShoppingCommodity commodityDetail = dao.getCommodityDetail(1018);
         log.info(commodityDetail.toString());
 
     }
