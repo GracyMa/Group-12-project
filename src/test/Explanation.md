@@ -72,3 +72,52 @@ This test validates the retrieval of an order using its order number.
 # Summary
 
 These tests collectively ensure that the `OrderService` class handles both successful and failure scenarios robustly and interacts correctly with its dependencies. By testing various scenarios such as sufficient stock, out-of-stock, and retrieving an order, the functionality of the service is validated comprehensively.
+
+---
+
+# OnlineShoppingCommodityDaoTest Explanation
+The OnlineShoppingCommodityDaoTest class is designed to validate the functionality of the OnlineShoppingCommodityDaoMySqlImpl class, ensuring that its methods for interacting with the database behave as expected
+The tests cover key operations such as inserting commodities, retrieving commodity lists, filtering commodities by user ID, and retrieving detailed information about a commodity. JUnit 5 is used for assertions and lifecycle management, and Spring Boot Test is used for setting up the application context.
+
+---
+
+## 1. `insertCommodity`
+This test verifies that a new commodity can be inserted into the database successfully.
+
+- **Setup**:Creates a commodity object with the mock info attributes:
+  Name: "TestCommodity"
+  Description: "desc"
+  Available Stock: 111
+  Total Stock: 111
+  Price: 999
+  Locked Stock: 0
+  Creator User ID: 124L
+- **Execution**: Calls dao.insertCommodity(commodity) to persist the commodity.
+- **Expected Return**: The commodity should be inserted into the database successfully. Also can be verified by fetching it in subsequent tests
+
+
+## 2. ` listCommodities`
+Ensures all commodities can be retrieved from the database.
+- **Setup**: No additional setup. Assumes the database contains existing data.
+- **Execution**: Calls dao.listCommodities() to fetch all available commodities.
+- **Expected Return**: Should return a non-empty list of commodities. Each entry should match database entries, but this is logged for manual validation.
+
+## 3. ` listCommoditiesByUserId`
+Checks if commodities can be filtered by the creator's user ID.
+- **Setup**: Use mock info from first test case of creatorUserId = 124L.
+- **Execution**: Calls dao.listCommoditiesByUserId(124L) to fetch commodities created by this user.
+- **Expected Return**: Returns a list of commodities where creatorUserId = 124L. The list should not be null or empty if the user has associated commodities.
+
+## 3. ` getCommodityDetail` 
+Verifies that detailed information about a specific commodity can be retrieved.
+- **Setup**:Use mock info from first test case, and assume the commodity is in database with id = 1002
+- **Execution**: Calls dao.getCommodityDetail(1002) to fetch the commodity's details.
+- **Expected Return**:Returns a commodity object with details matching the database entry for id = 1002. Logs the result for validation.
+
+---
+
+# Summary
+
+These tests collectively ensure that the OnlineShoppingCommodityDaoMySqlImpl class handles key database operations effectively. By testing insertion, retrieval of all commodities, filtering by user ID, and fetching detailed commodity information, the functionality of the DAO is validated comprehensively.
+
+---

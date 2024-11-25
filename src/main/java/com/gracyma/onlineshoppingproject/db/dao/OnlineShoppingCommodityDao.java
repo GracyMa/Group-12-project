@@ -14,7 +14,7 @@ public interface OnlineShoppingCommodityDao {
     // int because default return value is 1/0 success/fail
     int deductStockWithCommodityId(long commodityId);
 
-    int revertStockWithCommodityId(long commodityId);
+//    int revertStockWithCommodityId(long commodityId);
 
 //    List<OnlineShoppingCommodity>searchCommodityByKeyWord(String keyWord);
 }
