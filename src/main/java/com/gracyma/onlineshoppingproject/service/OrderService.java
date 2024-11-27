@@ -31,7 +31,7 @@ public class OrderService {
             commodityDetail.setLockStock(lockStock);
             onlineShoppingCommodityDao.updateCommodity(commodityDetail); // and put set update to database
             OnlineShoppingOrder order = createOrder(commodityId, 1L, userId);
-            onlineShoppingOrderDao.insertOrder(order);
+//            onlineShoppingOrderDao.insertOrder(order);
             log.info("Place order succesful, current availableStock:" +  availableStock);
             return order;
         } else {
