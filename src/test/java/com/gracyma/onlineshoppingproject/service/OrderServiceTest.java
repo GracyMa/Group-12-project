@@ -55,7 +55,7 @@ class OrderServiceTest {
         // Verify interactions
         verify(commodityDao, times(1)).getCommodityDetail(1L);
         verify(commodityDao, times(1)).updateCommodity(mockCommodity);
-        verify(orderDao, times(2)).insertOrder(any(OnlineShoppingOrder.class));
+        verify(orderDao, times(1)).insertOrder(any(OnlineShoppingOrder.class));
     }
 
     @Test
