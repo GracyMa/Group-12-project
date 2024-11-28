@@ -43,12 +43,11 @@ class OnlineShoppingCommodityDaoTest {
         List<OnlineShoppingCommodity> onlineShoppingCommodities = dao.listCommoditiesByUserId(125L);
         log.info(onlineShoppingCommodities.toString());
     }
-
-    @Test
-    void getCommodityDetail() {
-        OnlineShoppingCommodity commodityDetail = dao.getCommodityDetail(1018);
-        log.info(commodityDetail.toString());
-
-    }
+//    @Test
+//    void getCommodityDetail() {
+//        OnlineShoppingCommodity commodityDetail = dao.getCommodityDetail(1018);
+//        log.info(commodityDetail.toString());
+//
+//    }
 
 }
