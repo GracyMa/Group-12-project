@@ -1,18 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>商品活动发布</title>
-    <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <link rel="stylesheet" type="text/css" href="/css/pages-getOrderInfo.css" />
+    <title>商品列表</title>
+    <link rel="icon" href="img/qiuzhilogo.png">
+
+    <!-- 引入样式 -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <link rel="stylesheet" type="text/css" href="css/all.css" />
+    <link rel="stylesheet" type="text/css" href="css/pages-seckill-index.css" />
+
+
+
 </head>
 
 <body>
-<!--head-->
 <!-- 头部栏位 -->
 <!--页面顶部-->
 <div id="nav-bottom">
@@ -22,18 +27,52 @@
             <div class="py-container">
                 <div class="shortcut">
                     <ul class="fl">
-                        <li class="f-item"></li>
-                        <li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+                        <li class="f-item">求职欢迎您！</li>
+                        <li class="f-item">请
+                            <a href="login.html" target="_blank">登录</a>
+                            <span>
+									<a href="register.html" target="_blank">免费注册</a>
+								</span>
+                        </li>
                     </ul>
                     <div class="fr typelist">
                         <ul class="types">
-                            <li class="f-item"><span>我的订单</span></li>
+                            <li class="f-item">
+                                <span>我的订单</span>
+                            </li>
 
-                            <li class="f-item"><span><a href="cart.html" target="_blank">我的购物车</a></span></li>
-                            <li class="f-item"><span>企业采购</span></li>
-                            <li class="f-item"><span><a href="cooperation.html" target="_blank">合作招商</a></span></li>
-                            <li class="f-item"><span><a href="shoplogin.html" target="_blank">商家后台</a></span></li>
-                            <li class="f-item"><span>网站导航</span></li>
+                            <li class="f-item">
+									<span>
+										<a href="cart.html" target="_blank">我的购物车</a>
+									</span>
+                            </li>
+                            <li class="f-item">
+									<span>
+										<a href="home.html" target="_blank">我的求职</a>
+									</span>
+                            </li>
+                            <li class="f-item">
+                                <span>求职会员</span>
+                            </li>
+                            <li class="f-item">
+                                <span>企业采购</span>
+                            </li>
+                            <li class="f-item">
+                                <span>关注求职</span>
+                            </li>
+                            <li class="f-item">
+									<span>
+										<a href="cooperation.html" target="_blank">合作招商</a>
+									</span>
+                            </li>
+                            <li class="f-item">
+									<span>
+										<a href="shoplogin.html" target="_blank">商家后台</a>
+									</span>
+                            </li>
+                            <li class="f-item">
+                                <span>网站导航 </span>
+                            </li>
                         </ul>
                     </div>
 
@@ -46,85 +85,102 @@
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
-                        <a class="logo-bd" title="青橙" href="index.html" target="_blank"></a>
+                        <a class="logo-bd" title="求职" href="index.html" target="_blank"></a>
                     </div>
                     <div class="yui3-u Rit searchArea">
                         <div class="search">
-                            <form action="" class="sui-form form-inline">
+                            <form action="" class="sui-form form-inline" th:action="@{/searchAction}" method="get">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
-                                    <input type="text" id="autocomplete" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+                                    <input type="text" id="searchWords"  name="keyWord" class="input-error input-xxlarge" />
+                                    <button class="sui-btn btn-xlarge btn-danger" type="submit">搜索</button>
                                 </div>
                             </form>
                         </div>
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <div>
+                                <p>
+                                    <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" onchange="checkFileSize(this)" />
+                                </p>
+                                <p>
+                                    <button type="submit">上传图片</button>
+                                </p>
+                            </div>
+                        </form>
+                        <script>
+                            function checkFileSize(fileInput) {
+                                const maxFileSize = 2 * 1024 * 1024; // 2MB
+                                if (fileInput.files[0].size > maxFileSize) {
+                                    alert('文件大小不能超过2MB');
+                                    fileInput.value = ''; // 清除选中文件
+                                }
+                            }
+                        </script>
                     </div>
 
                 </div>
 
             </div>
         </div>
-        <!-- 文件上传表单 -->
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <div>
-                <p>
-                    <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" onchange="checkFileSize(this)" />
-                </p>
-                <p>
-                    <button type="submit">上传图片</button>
-                </p>
-            </div>
-        </form>
-
     </div>
 </div>
-<script>
-    function checkFileSize(fileInput) {
-        const maxFileSize = 2 * 1024 * 1024; // 2MB
-        if (fileInput.files[0].size > maxFileSize) {
-            alert('文件大小不能超过2MB');
-            fileInput.value = ''; // 清除选中文件
-        }
-    }
-</script>
 
 
-<div class="cart py-container" id="cart">
-    <!--主内容-->
-    <div class="checkout py-container">
-        <div class="checkout-tit">
-            <h4 class="tit-txt">新增商品信息</h4>
-        </div>
-        <div class="checkout-steps">
-            <div class="hr"></div>
-            <!--支付和送货-->
-            <div class="payshipInfo">
-                <div class="hr"></div>
-                <div class="step-cont">
-                    <ul class="send-detail">
-                        <li>
-                            <div class="sendGoods">
-                                <form action="@{/commodities}" method="post">
-                                    商品ID：<input type="text" name="commodityId"><br><br>
-                                    商品名称:<input type="text" name="commodityName"><br><br>
-                                    商品描述:<input type="text" name="commodityDesc"><br><br>
-                                    商品价格：<input type="text" name="price"><br><br>
-                                    商品数量：<input type="text" name="availableStock"><br><br>
-                                    商家ID：<input type="text" name="creatorUserId"><br><br>
-                                    <input type="submit" value="提交">
-                                </form>
+<div class="py-container index">
+    <!--banner-->
+    <div class="banner">
+        <img src="img/_/banner.png" class="img-responsive" alt="">
+    </div>
+
+    <!--商品列表-->
+    <div class="goods-list" id="app">
+        <ul class="seckill" id="seckill">
+            <tr th:each="item : ${itemList}">
+                <li class="seckill-item" >
+                    <div class="pic">
+                        <img src="img/_/list.jpg" alt=''>
+                    </div>
+                    <div class="intro">
+                        <span th:text="${item.commodityName}">商品名称</span>
+                    </div>
+                    <div class='price'>
+                        <b class='sec-price' th:text="'￥'+${item.price}"></b>
+                    </div>
+                    <div class='num'>
+                        <div>已售10</div>
+                        <div class='progress'>
+                            <div class='sui-progress progress-danger'>
+                                <span style='width: 70%;' class='bar'></span>
                             </div>
-
-                        </li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="hr"></div>
-            </div>
+                        </div>
+                        <div>剩余
+                            <b class='owned'  th:text="${item.availableStock}" > </b>件
+                        </div>
+                    </div>
+                    <a class='sui-btn btn-block btn-buy' th:href="@{'/commodities/'+${item.commodityId}}" target='_blank'>立即抢购</a>
+                </li>
+            </tr>
+        </ul>
+    </div>
+    <div class="cd-top">
+        <div class="top">
+            <img src="img/_/gotop.png" />
+            <b>TOP</b>
+        </div>
+        <div class="code" id="code">
+				<span>
+					<img src="img/_/code.png" />
+				</span>
+        </div>
+        <div class="erweima">
+            <img src="img/_/erweima.jpg" alt="">
+            <s></s>
         </div>
     </div>
 </div>
+
+<!--回到顶部-->
+
 <!-- 底部栏位 -->
 <!--页面底部-->
 <div class="clearfix footer">
@@ -232,15 +288,111 @@
                             <li>品优购通信</li>
                         </ul>
                     </div>
+                    <div class="yui3-u-1-6">
+                        <h4>帮助中心</h4>
+                        <img src="img/erwei_jz.png">
+                    </div>
                 </div>
+            </div>
+            <div class="Mod-copyright">
+                <ul class="helpLink">
+                    <li>关于我们
+                        <span class="space"></span>
+                    </li>
+                    <li>联系我们
+                        <span class="space"></span>
+                    </li>
+                    <li>关于我们
+                        <span class="space"></span>
+                    </li>
+                    <li>商家入驻
+                        <span class="space"></span>
+                    </li>
+                    <li>营销中心
+                        <span class="space"></span>
+                    </li>
+                    <li>友情链接
+                        <span class="space"></span>
+                    </li>
+                    <li>关于我们
+                        <span class="space"></span>
+                    </li>
+                    <li>营销中心
+                        <span class="space"></span>
+                    </li>
+                    <li>友情链接
+                        <span class="space"></span>
+                    </li>
+                    <li>关于我们</li>
+                </ul>
+                <p>求职算法</p>
+                <p>商务合作: lyon@qiuzhi.com</p>
             </div>
         </div>
     </div>
 </div>
 <!--页面底部END-->
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                goodslist: [{
+                    intro: 'Apple苹果iPhone 6s 32G金色 移动联通电信4G手机',
+                    newprice: '6088',
+                    oldprice: '6988',
+                    rate: '87%',
+                    left: '29'
+                },
+                    {
+                        intro: 'Apple苹果iPhone 6s 32G金色 移动联通电信4G手机',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }, {
+                        intro: 'Apple苹果iPhone 6s 32G金色 移动联通电信4G手机',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }, {
+                        intro: 'Apple苹果iPhone 6s 32G金色 移动联通电信4G手机',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }, {
+                        intro: 'Apple苹果iPhone6 s 32 G金色 移动联通电信4G手机 ',
+                        newprice: '6088 ',
+                        oldprice: '6988 ',
+                        rate: '87 % ',
+                        left: '29 '
+                    },
+                    {
+                        intro: 'Apple苹果iPhone 6 s 32 G金色 移动联通电信4G手机 ',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }, {
+                        intro: 'Apple苹果iPhone 6s 32G金色 移动联通电信4G手机',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }
+                ]
+            }
+        }
+    })
+</script>
 
-<script src="/js/vue.js"></script>
-<script src="/js/axios.js"></script>
+
+
 </body>
+
 </html>
