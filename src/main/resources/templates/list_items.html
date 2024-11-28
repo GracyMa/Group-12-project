@@ -91,8 +91,8 @@
                             <form action="" class="sui-form form-inline" th:action="@{/searchAction}" method="get">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
-                                    <input type="text" id="searchWords"  name="keyWord" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="submit">Search</button>
+                                    <input type="file" id="imageFile" name="image" accept="image/jpeg" class="input-error input-xxlarge" />
+                                    <button class="sui-btn btn-xlarge btn-danger" type="button" onclick="submitImage()">Search</button>
                                 </div>
                             </form>
                         </div>
