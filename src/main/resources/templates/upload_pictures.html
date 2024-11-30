@@ -1,39 +1,76 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<html>
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=9; IE=8; IE=7; IE=EDGE">
+    <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=EmulateIE7" />
-    <title>商品活动发布</title>
-    <link rel="stylesheet" type="text/css" href="/css/all.css" />
-    <link rel="stylesheet" type="text/css" href="/css/pages-getOrderInfo.css" />
+    <title>Product List</title>
+    <link rel="icon" href="img/BuyBuy.png">
+
+    <!-- Include Styles -->
+    <link rel="stylesheet" href="https://unpkg.com/element-ui/lib/theme-chalk/index.css">
+
+    <link rel="stylesheet" type="text/css" href="css/all.css" />
+    <link rel="stylesheet" type="text/css" href="css/pages-seckill-index.css" />
+
+
+
 </head>
 
 <body>
-<!--head-->
-<!-- 头部栏位 -->
-<!--页面顶部-->
+<!-- Header -->
+<!-- Page Top -->
 <div id="nav-bottom">
-    <!--顶部-->
+    <!-- Top -->
     <div class="nav-top">
         <div class="top">
             <div class="py-container">
                 <div class="shortcut">
                     <ul class="fl">
-                        <li class="f-item"></li>
-                        <li class="f-item">请<a href="login.html" target="_blank">登录</a>　<span><a href="register.html" target="_blank">免费注册</a></span></li>
+                        <li class="f-item">FREE SHIPPIING THIS WEEK ORDER OVER $50！</li>
+                        <li class="f-item">
+                            <a href="login.html" target="_blank">Sign in </a>
+                            <span>
+                           <a href="register.html" target="_blank">Sign up</a>
+                        </span>
+                        </li>
+
                     </ul>
                     <div class="fr typelist">
                         <ul class="types">
-                            <li class="f-item"><span>我的订单</span></li>
+                            <li class="f-item">
+                                <span>My Order</span>
+                            </li>
 
-                            <li class="f-item"><span><a href="cart.html" target="_blank">我的购物车</a></span></li>
-                            <li class="f-item"><span>企业采购</span></li>
-                            <li class="f-item"><span><a href="cooperation.html" target="_blank">合作招商</a></span></li>
-                            <li class="f-item"><span><a href="shoplogin.html" target="_blank">商家后台</a></span></li>
-                            <li class="f-item"><span>网站导航</span></li>
+                            <li class="f-item">
+									<span>
+										<a href="cart.html" target="_blank">My Cart</a>
+									</span>
+                            </li>
+                            <li class="f-item">
+									<span>
+										<a href="home.html" target="_blank">My Account</a>
+									</span>
+                            </li>
+                            <li class="f-item">
+                                <span>Membership</span>
+                            </li>
+                            <li class="f-item">
+                                <span>Order History</span>
+                            </li>
+                            <li class="f-item">
+                                <span>Buy Again</span>
+                            </li>
+                            <li class="f-item">
+                                <span>
+                                    <a href="cooperation.html" target="_blank">Cooperation</a>
+                                </span>
+                            </li>
+                            <li class="f-item">
+                                    <span>
+                                        <a href="shoplogin.html" target="_blank">Service</a>
+                                        </span>
+                            </li>
                         </ul>
                     </div>
 
@@ -41,92 +78,110 @@
             </div>
         </div>
 
-        <!--头部-->
+        <!--Header-->
         <div class="header">
             <div class="py-container">
                 <div class="yui3-g Logo">
                     <div class="yui3-u Left logoArea">
-                        <a class="logo-bd" title="青橙" href="index.html" target="_blank"></a>
+                        <img class="logo-nd" src="img/BuyBuy1.png" alt="Logo" style="width: 100px; height: auto;">
+
                     </div>
                     <div class="yui3-u Rit searchArea">
                         <div class="search">
-                            <form action="" class="sui-form form-inline">
+                            <form action="" class="sui-form form-inline" th:action="@{/searchAction}" method="get">
                                 <!--searchAutoComplete-->
                                 <div class="input-append">
-                                    <input type="text" id="autocomplete" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="button">搜索</button>
+                                    <input type="text" id="searchWords"  name="keyWord" class="input-error input-xxlarge" />
+                                    <button class="sui-btn btn-xlarge btn-danger" type="submit">Search</button>
                                 </div>
                             </form>
                         </div>
+                        <form action="/upload" method="post" enctype="multipart/form-data">
+                            <div>
+                                <p>
+                                    <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" onchange="checkFileSize(this)" />
+                                </p>
+                                <p>
+                                    <button type="submit">Upload The Picture</button>
+                                </p>
+                            </div>
+                        </form>
+                        <script>
+                            function checkFileSize(fileInput) {
+                                const maxFileSize = 2 * 1024 * 1024; // 2MB
+                                if (fileInput.files[0].size > maxFileSize) {
+                                    alert('The file size must not exceed 2MB');
+                                    fileInput.value = ''; // 清除选中文件
+                                }
+                            }
+                        </script>
                     </div>
 
                 </div>
 
             </div>
         </div>
-        <!-- 文件上传表单 -->
-        <form action="/upload" method="post" enctype="multipart/form-data">
-            <div>
-                <p>
-                    <input type="file" name="fileImage" id="fileImage" accept="image/png, image/jpeg" onchange="checkFileSize(this)" />
-                </p>
-                <p>
-                    <button type="submit">上传图片</button>
-                </p>
-            </div>
-        </form>
-
     </div>
 </div>
-<script>
-    function checkFileSize(fileInput) {
-        const maxFileSize = 2 * 1024 * 1024; // 2MB
-        if (fileInput.files[0].size > maxFileSize) {
-            alert('文件大小不能超过2MB');
-            fileInput.value = ''; // 清除选中文件
-        }
-    }
-</script>
 
 
-<div class="cart py-container" id="cart">
-    <!--主内容-->
-    <div class="checkout py-container">
-        <div class="checkout-tit">
-            <h4 class="tit-txt">新增商品信息</h4>
-        </div>
-        <div class="checkout-steps">
-            <div class="hr"></div>
-            <!--支付和送货-->
-            <div class="payshipInfo">
-                <div class="hr"></div>
-                <div class="step-cont">
-                    <ul class="send-detail">
-                        <li>
-                            <div class="sendGoods">
-                                <form action="@{/commodities}" method="post">
-                                    商品ID：<input type="text" name="commodityId"><br><br>
-                                    商品名称:<input type="text" name="commodityName"><br><br>
-                                    商品描述:<input type="text" name="commodityDesc"><br><br>
-                                    商品价格：<input type="text" name="price"><br><br>
-                                    商品数量：<input type="text" name="availableStock"><br><br>
-                                    商家ID：<input type="text" name="creatorUserId"><br><br>
-                                    <input type="submit" value="提交">
-                                </form>
+<div class="py-container index">
+    <!--banner-->
+    <div class="banner">
+        <img src="img/_/banner.jpg" class="img-responsive" alt="">
+    </div>
+
+    <!--Product List-->
+    <div class="goods-list" id="app">
+        <ul class="seckill" id="seckill">
+            <tr th:each="item : ${itemList}">
+                <li class="seckill-item" >
+                    <div class="pic">
+                        <img src="img/_/list.jpg" alt=''>
+                    </div>
+                    <div class="intro">
+                        <span th:text="${item.commodityName}">Product Name</span>
+                    </div>
+                    <div class='price'>
+                        <b class='sec-price' th:text="'￥'+${item.price}"></b>
+                    </div>
+                    <div class='num'>
+                        <div>Review11</div>
+                        <div class='progress'>
+                            <div class='sui-progress progress-danger'>
+                                <span style='width: 70%;' class='bar'></span>
                             </div>
-
-                        </li>
-                        <li></li>
-                        <li></li>
-                    </ul>
-                </div>
-                <div class="hr"></div>
-            </div>
+                        </div>
+                        <div>Remaining
+                            <b class='owned'  th:text="${item.availableStock}" > </b>units
+                        </div>
+                    </div>
+                    <a class='sui-btn btn-block btn-buy' th:href="@{'/commodities/'+${item.commodityId}}" target='_blank'>Add to Cart</a>
+                </li>
+            </tr>
+        </ul>
+    </div>
+    <div class="cd-top">
+        <div class="top">
+            <img src="img/_/gotop.png" />
+            <b>TOP</b>
+        </div>
+        <div class="code" id="code">
+				<span>
+					<img src="img/_/code.png" />
+				</span>
+        </div>
+        <div class="erweima">
+            <img src="img/_/erweima.jpg" alt="">
+            <s></s>
         </div>
     </div>
 </div>
-<!-- 底部栏位 -->
-<!--页面底部-->
+
+<!-- Back to Top -->
+
+<!-- Footer -->
+<!-- Page Footer -->
 <div class="clearfix footer">
     <div class="py-container">
         <div class="footlink">
@@ -134,47 +189,57 @@
                 <ul class="Mod-Service-list">
                     <li class="grid-service-item intro  intro1">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Gifting & Registry</h4>
+                            <p>Gift Cards</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item  intro intro2">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Deals & Savings</h4>
+                            <p>Holiday Deals</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item intro  intro3">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Groceries & Stores</h4>
+                            <p>Foods, Markets</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item  intro intro4">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Fashion & Beauty</h4>
+                            <p>Jewelry, Perfume</p>
                         </div>
+
 
                     </li>
                     <li class="grid-service-item intro intro5">
 
+
                         <i class="serivce-item fl"></i>
                         <div class="service-text">
-                            <h4>正品保障</h4>
-                            <p>正品保障，提供发票</p>
+                            <h4>Home & DIY</h4>
+                            <p>Kitchen, Appliance</p>
                         </div>
+
 
                     </li>
                 </ul>
@@ -182,65 +247,153 @@
             <div class="clearfix Mod-list">
                 <div class="yui3-g">
                     <div class="yui3-u-1-6">
-                        <h4>购物指南</h4>
+                        <h4>SERVICES</h4>
                         <ul class="unstyled">
-                            <li>购物流程</li>
-                            <li>会员介绍</li>
-                            <li>生活旅行/团购</li>
-                            <li>常见问题</li>
-                            <li>购物指南</li>
+                            <li>Princes Drop</li>
+                            <li>New Products</li>
+                            <li>Best Sales</li>
+                            <li>Contact Us</li>
+                            <li>Common Questions</li>
                         </ul>
+
 
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>配送方式</h4>
+                        <h4>DELIVERY</h4>
                         <ul class="unstyled">
-                            <li>上门自提</li>
-                            <li>211限时达</li>
-                            <li>配送服务查询</li>
-                            <li>配送费收取标准</li>
-                            <li>海外配送</li>
+                            <li>Pick Up</li>
+                            <li>24 Hrs Delivery</li>
+                            <li>Inquiry Shipping</li>
+                            <li>Shipping Fee</li>
+                            <li>International Shipping</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>支付方式</h4>
+                        <h4>PAYMENT</h4>
                         <ul class="unstyled">
-                            <li>货到付款</li>
-                            <li>在线支付</li>
-                            <li>分期付款</li>
-                            <li>邮局汇款</li>
-                            <li>公司转账</li>
+                            <li>Pay On Delivery</li>
+                            <li>Online Payment</li>
+                            <li>Installment</li>
+                            <li>Remittance</li>
+                            <li>Transfer</li>
                         </ul>
                     </div>
                     <div class="yui3-u-1-6">
-                        <h4>售后服务</h4>
+                        <h4>AFTER SALE</h4>
                         <ul class="unstyled">
-                            <li>售后政策</li>
-                            <li>价格保护</li>
-                            <li>退款说明</li>
-                            <li>返修/退换货</li>
-                            <li>取消订单</li>
+                            <li>Return Policy</li>
+                            <li>Change Address</li>
+                            <li>Refund</li>
+                            <li>Return/Replace</li>
+                            <li>Cancel Order</li>
                         </ul>
                     </div>
+                    <!--                    <div class="yui3-u-1-6">-->
+                    <!--                        <h4>特色服务</h4>-->
+                    <!--                        <ul class="unstyled">-->
+                    <!--                            <li>夺宝岛</li>-->
+                    <!--                            <li>DIY装机</li>-->
+                    <!--                            <li>延保服务</li>-->
+                    <!--                            <li>品优购E卡</li>-->
+                    <!--                            <li>品优购通信</li>-->
+                    <!--                        </ul>-->
+                    <!--                    </div>-->
                     <div class="yui3-u-1-6">
-                        <h4>特色服务</h4>
+                        <h4>CONTACT</h4>
+                        <!--                        <img src="img/service.png">-->
                         <ul class="unstyled">
-                            <li>夺宝岛</li>
-                            <li>DIY装机</li>
-                            <li>延保服务</li>
-                            <li>品优购E卡</li>
-                            <li>品优购通信</li>
+                            <li class="footer-nav-item flex">
+                                <div class="icon-box">
+                                    <ion-icon name="location-outline"></ion-icon>
+                                </div>
+
+
+                                <address class="content">
+                                    419 State 414 Rte
+                                    Beaver Dams, New York(NY), 14812, USA
+                                </address>
+                            </li>
+
+
+                            <li class="footer-nav-item flex">
+                                <div class="icon-box">
+                                    <ion-icon name="call-outline"></ion-icon>
+                                </div>
+
+
+                                <a href="tel:+607936-8058" class="footer-nav-link">(607) 936-8058</a>
+                            </li>
+
+
+                            <li class="footer-nav-item flex">
+                                <div class="icon-box">
+                                    <ion-icon name="mail-outline"></ion-icon>
+                                </div>
+
+
+                                <a href="mailto:example@gmail.com" class="footer-nav-link">example@gmail.com</a>
+                            </li>
+
+
                         </ul>
                     </div>
+
+
                 </div>
+            </div>
+            <div class="Mod-copyright">
+                <ul class="helpLink">
+                    <li>About Us
+                        <span class="space"></span>
+                    </li>
+                    <li>Connect Us
+                        <span class="space"></span>
+                    </li>
+                    <li>Join Us
+                        <span class="space"></span>
+                    </li>
+                    <li>Marketing Center
+                        <span class="space"></span>
+                    </li>
+
+
+
+                    <div class="footer-bottom">
+                        <div class="container">
+                            <img src="img/payment.png" alt="payment method" class="payment-img">
+                            <p>Copyright © <a href="#">Gracy</a> All rights reserved.</p>
+                        </div>
+                    </div>
+                </ul>>
             </div>
         </div>
     </div>
 </div>
-<!--页面底部END-->
-<script type="text/javascript" src="js/plugins/jquery/jquery.min.js"></script>
 
-<script src="/js/vue.js"></script>
-<script src="/js/axios.js"></script>
+<!--页面底部END-->
+<!-- 引入组件库 -->
+<script src="https://cdn.jsdelivr.net/npm/vue@2.6.8/dist/vue.js"></script>
+<script src="https://cdn.bootcss.com/element-ui/2.5.4/index.js"></script>
+<script type = "module" src = "https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js" ></script>
+<script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+<!--</script>-->
+<script>
+    new Vue({
+        el: '#app',
+        data() {
+            return {
+                goodslist: [
+                    {
+                        intro: 'Apple iPhone 6s 32G Gold Mobile Unicom Telecom 4G Phone',
+                        newprice: '6088',
+                        oldprice: '6988',
+                        rate: '87%',
+                        left: '29'
+                    }
+                ]
+            }
+        }
+    });
+</script>
 </body>
 </html>
