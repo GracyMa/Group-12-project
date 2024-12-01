@@ -88,11 +88,10 @@
                     </div>
                     <div class="yui3-u Rit searchArea">
                         <div class="search">
-                            <form action="" class="sui-form form-inline" th:action="@{/searchAction}" method="get">
-                                <!--searchAutoComplete-->
+                            <form th:action="@{/upload}" method="post" enctype="multipart/form-data" class="sui-form form-inline">
                                 <div class="input-append">
                                     <input type="file" id="imageFile" name="image" accept="image/jpeg" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="button" onclick="submitImage()">Search</button>
+                                    <button class="sui-btn btn-xlarge btn-danger" type="submit">Search</button>
                                 </div>
                             </form>
                         </div>
@@ -115,31 +114,32 @@
     <!--Product List-->
     <div class="goods-list" id="app">
         <ul class="seckill" id="seckill">
-            <tr th:each="item : ${itemList}">
-                <li class="seckill-item" >
-                    <div class="pic">
-                        <img src="img/_/list.jpg" alt=''>
-                    </div>
-                    <div class="intro">
-                        <span th:text="${item.commodityName}">Product Name</span>
-                    </div>
-                    <div class='price'>
-                        <b class='sec-price' th:text="'￥'+${item.price}"></b>
-                    </div>
-                    <div class='num'>
-                        <div>Review11</div>
-                        <div class='progress'>
-                            <div class='sui-progress progress-danger'>
-                                <span style='width: 70%;' class='bar'></span>
-                            </div>
+            <div th:if="${itemList.empty}">
+                <p>No products to display. Please upload an image to start searching.</p>
+            </div>
+
+            <!-- 动态渲染商品列表 -->
+            <li class="seckill-item" th:each="item : ${itemList}">
+                <div class="pic">
+                    <img th:src="${item.imageUrl}" alt="Product Image">
+                </div>
+                <div class="intro">
+                    <span th:text="${item.title}">Product Name</span>
+                </div>
+                <div class="price">
+                    <b class="sec-price" th:text="'$'+${item.price}"></b>
+                </div>
+                <div class="num">
+                    <div>Review: 85% Positive</div>
+                    <div class="progress">
+                        <div class="sui-progress progress-danger">
+                            <span style="width: 70%;" class="bar"></span>
                         </div>
-                        <div>Remaining
-                            <b class='owned'  th:text="${item.availableStock}" > </b>units
-                        </div>
                     </div>
-                    <a class='sui-btn btn-block btn-buy' th:href="@{'/commodities/'+${item.commodityId}}" target='_blank'>Add to Cart</a>
-                </li>
-            </tr>
+                    <div>Remaining: <b class="owned">10</b> units</div>
+                </div>
+                <a class="sui-btn btn-block btn-buy" th:href="@{'/commodities/'+${item.title}}" target="_blank">Add to Cart</a>
+            </li>
         </ul>
     </div>
     <div class="cd-top">
@@ -269,19 +269,8 @@
                             <li>Cancel Order</li>
                         </ul>
                     </div>
-                    <!--                    <div class="yui3-u-1-6">-->
-                    <!--                        <h4>特色服务</h4>-->
-                    <!--                        <ul class="unstyled">-->
-                    <!--                            <li>夺宝岛</li>-->
-                    <!--                            <li>DIY装机</li>-->
-                    <!--                            <li>延保服务</li>-->
-                    <!--                            <li>品优购E卡</li>-->
-                    <!--                            <li>品优购通信</li>-->
-                    <!--                        </ul>-->
-                    <!--                    </div>-->
                     <div class="yui3-u-1-6">
                         <h4>CONTACT</h4>
-                        <!--                        <img src="img/service.png">-->
                         <ul class="unstyled">
                             <li class="footer-nav-item flex">
                                 <div class="icon-box">
