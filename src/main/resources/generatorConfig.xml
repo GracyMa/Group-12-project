@@ -8,7 +8,7 @@ Configuration 1.0//EN" "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd"
         </commentGenerator>
         <jdbcConnection
                 driverClass="com.mysql.cj.jdbc.Driver"
-                connectionURL="jdbc:mysql://localhost:3306/online_shopping_project?
+                connectionURL="jdbc:mysql://localhost:3306/online_shopping?
 serverTimezone=UTC"
                 userId="root"
                 password="matianyi1201">
