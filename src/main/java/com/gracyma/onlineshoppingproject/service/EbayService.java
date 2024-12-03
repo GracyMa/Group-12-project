@@ -1,7 +1,10 @@
 package com.gracyma.onlineshoppingproject.service;
 
 import com.gracyma.onlineshoppingproject.model.ItemSummary;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpEntity;
+import org.springframework.http.HttpHeaders;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 import org.springframework.web.util.UriComponentsBuilder;
@@ -13,29 +16,31 @@ import java.util.Map;
 @Service
 public class EbayService {
 
-    @Value("${ebay.api.base-url}")
-    private String baseUrl;
+    @Autowired
+    private EbayAuthService ebayAuthService;
 
-    @Value("${ebay.api.token}")
-    private String apiToken;
-
+    @Autowired
     private final RestTemplate restTemplate;
+
+    private static final String BASE_URL = "https://api.ebay.com/buy/browse/v1/item_summary/search";
 
     public EbayService(RestTemplate restTemplate) {
         this.restTemplate = restTemplate;
     }
 
     public List<ItemSummary> searchItems(String keyword, int limit) {
-        String url = UriComponentsBuilder.fromHttpUrl(baseUrl)
+        String accessToken = ebayAuthService.fetchAccessToken();
+
+        String url = UriComponentsBuilder.fromHttpUrl(BASE_URL)
                 .queryParam("q", keyword)
                 .queryParam("limit", limit)
                 .toUriString();
 
-        org.springframework.http.HttpHeaders headers = new org.springframework.http.HttpHeaders();
-        headers.set("Authorization", "Bearer " + apiToken);
+        HttpHeaders headers = new HttpHeaders();
+        headers.set("Authorization", "Bearer " + accessToken);
         headers.set("Content-Type", "application/json");
 
-        org.springframework.http.HttpEntity<String> entity = new org.springframework.http.HttpEntity<>(headers);
+        HttpEntity<String> entity = new HttpEntity<>(headers);
         Map<String, Object> response = restTemplate.exchange(
                 url,
                 org.springframework.http.HttpMethod.GET,

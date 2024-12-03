@@ -46,8 +46,8 @@ public class ProductController {
                 return "list_items";
             }
 
-            String keyword = labels.get(0);
-            List<ItemSummary> items = ebayService.searchItems(keyword, 10);
+            String keyword = labels.get(2);
+            List<ItemSummary> items = ebayService.searchItems(keyword, 20);
 
             model.addAttribute("itemList", items);
             return "list_items";
