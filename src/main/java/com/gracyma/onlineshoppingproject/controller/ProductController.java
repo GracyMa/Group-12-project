@@ -30,7 +30,20 @@ public class ProductController {
         return "list_items";
     }
 
-    @PostMapping("/upload")
+    @GetMapping("/search")
+    public String search(@RequestParam(value = "keyWord", required = false) String keyword, Model model) {
+        if (keyword != null && !keyword.isEmpty()) {
+            // Perform eBay search based on the keyword
+            List<ItemSummary> items = ebayService.searchItems(keyword, 20);
+            model.addAttribute("itemList", items);
+        } else {
+            model.addAttribute("error", "No keyword provided for search.");
+            model.addAttribute("itemList", Collections.emptyList());
+        }
+        return "list_items"; // Return the search result page
+    }
+
+    @PostMapping("/search")
     public String uploadAndSearch(@RequestParam("image") MultipartFile imageFile, Model model) {
         try {
             String filePath = System.getProperty("java.io.tmpdir") + "/" + imageFile.getOriginalFilename();

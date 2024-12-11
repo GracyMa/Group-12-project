@@ -13,6 +13,40 @@
     <link rel="stylesheet" type="text/css" href="css/all.css" />
     <link rel="stylesheet" type="text/css" href="css/pages-seckill-index.css" />
 
+    <style>
+        .custom-file-upload {
+            display: inline-block;
+            padding-top: 4px;
+            padding-bottom: 10px;
+            padding-left: 20px;
+            background-color: #77c018;
+            color: white;
+            font-size: 15px;
+            cursor: pointer;
+
+            margin-right: 3px;
+        }
+
+        .custom-file-upload input[type="file"] {
+            display: none;  /* Hide the actual file input */
+        }
+
+        .input-append {
+            display: flex;
+            align-items: center;
+        }
+
+        .input-append input[type="text"] {
+            width: 100px;
+            font-size: 14px;
+            padding: 5px 10px;
+            margin-right: 10px;
+        }
+
+        input[type="file"]:focus {
+            outline: none;
+        }
+    </style>
 
 
 </head>
@@ -88,17 +122,38 @@
                     </div>
                     <div class="yui3-u Rit searchArea">
                         <div class="search">
-                            <form th:action="@{/upload}" method="post" enctype="multipart/form-data" class="sui-form form-inline">
-                                <div class="input-append">
-                                    <input type="file" id="imageFile" name="image" accept="image/jpeg" class="input-error input-xxlarge" />
-                                    <button class="sui-btn btn-xlarge btn-danger" type="submit">Search</button>
+                            <form id="searchForm" action="/search" method="get" enctype="multipart/form-data" class="sui-form form-inline">
+                                <div class="search-container">
+                                    <div class="input-append">
+                                        <!-- Input for search keyword -->
+                                        <input type="text" id="searchWords" name="keyWord" class="input-error input-xxlarge" placeholder="Enter a keyword for search" />
+
+                                        <!-- File input for selecting an image (Custom style to hide "No file chosen" text and border) -->
+                                        <label for="imageFile" class="custom-file-upload">
+                                            Upload Image
+                                            <input type="file" name="image" id="imageFile" accept="image/jpeg" class="input-error input-xxlarge" />
+                                        </label>
+
+                                        <button class="sui-btn btn-xlarge btn-danger" type="submit" onclick="handleSubmit()">Search</button>
+                                    </div>
                                 </div>
                             </form>
                         </div>
                     </div>
 
-                </div>
+                    <script>
+                        function handleSubmit() {
+                            var searchForm = document.getElementById('searchForm');
+                            var imageFile = document.getElementById('imageFile').files.length;
 
+                            if (imageFile > 0) {
+                                searchForm.method = "post";
+                            } else {
+                                searchForm.method = "get";
+                            }
+                        }
+                    </script>
+                </div>
             </div>
         </div>
     </div>
