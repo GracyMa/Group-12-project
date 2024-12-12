@@ -7,11 +7,11 @@ public class LoginController {
 
     @GetMapping("/login")
     public String login() {
-        return "login";
+        return "user_login";
     }
 
-    @GetMapping("/")
+    @GetMapping("/home")
     public String home() {
-        return "home";
+        return "user_detail";
     }
 }
