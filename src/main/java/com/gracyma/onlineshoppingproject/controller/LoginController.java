@@ -12,6 +12,6 @@ public class LoginController {
 
     @GetMapping("/home")
     public String home() {
-        return "user_detail";
+        return "list_items";
     }
 }
